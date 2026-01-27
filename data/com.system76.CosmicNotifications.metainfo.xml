@@ -11,12 +11,14 @@
   <name xml:lang="pt_BR">Notificações</name>
   <name xml:lang="pt">Notificações</name>
   <name xml:lang="sv">COSMIC Aviseringar</name>
+  <name xml:lang="sv">Notifiche di COSMIC</name>
   <summary>COSMIC Notifications Daemon</summary>
   <summary xml:lang="ar">ناطر إشعارات COSMIC</summary>
   <summary xml:lang="cs">Daemon pro oznámení COSMIC</summary>
   <summary xml:lang="pl">Usługa powiadomień COSMIC</summary>
   <summary xml:lang="pt_BR">Daemon de notificações do COSMIC</summary>
   <summary xml:lang="sv">Bakgrundsprocess för COSMIC Aviseringar</summary>
+  <summary xml:lang="it">Processo in background per le notifiche di COSMIC</summary>
   <description>
     <p>The COSMIC Notifications Daemon</p>
     <p xml:lang="ar">ناطر إشعارات COSMIC</p>
@@ -25,6 +27,7 @@
     <p xml:lang="pt_BR">O daemon de notificações do COSMIC</p>
     <p xml:lang="pt">O daemon de notificações do COSMIC</p>
     <p xml:lang="sv">Bakgrundsprocessen för COSMIC Aviseringar</p>
+    <p xml:lang="it">Processo in background per le notifiche di COSMIC</p>
   </description>
   <url type="homepage">https://github.com/pop-os/cosmic-notifications</url>
   <url type="bugtracker">https://github.com/pop-os/cosmic-notifications/issues</url>
