@@ -1,1 +1,0 @@
-app-name = COSMICin ilmoitukset
