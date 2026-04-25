@@ -126,7 +126,6 @@ pub struct NotificationsApplet {
     tx: Sender<Input>,
 }
 
-#[allow(clippy::too_many_arguments)]
 #[interface(name = "com.system76.NotificationsApplet")]
 impl NotificationsApplet {
     #[zbus(signal)]

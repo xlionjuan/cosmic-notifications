@@ -107,7 +107,7 @@ impl Notification {
     }
 
     pub fn transient(&self) -> bool {
-        self.hints.iter().any(|h| *h == Hint::Transient(true))
+        self.hints.contains(&Hint::Transient(true))
     }
 
     pub fn category(&self) -> Option<&str> {
@@ -153,12 +153,11 @@ impl Notification {
             None => {
                 if !self.app_icon.is_empty() {
                     // Handle file:// URLs in app_icon
-                    if self.app_icon.starts_with("file://") {
-                        if let Ok(url) = url::Url::parse(&self.app_icon) {
-                            if let Ok(path) = url.to_file_path() {
-                                return Some(icon::from_path(path).icon());
-                            }
-                        }
+                    if self.app_icon.starts_with("file://")
+                        && let Ok(url) = url::Url::parse(&self.app_icon)
+                        && let Ok(path) = url.to_file_path()
+                    {
+                        return Some(icon::from_path(path).icon());
                     }
                     // Otherwise treat as icon name
                     Some(icon::from_name(self.app_icon.as_str()).icon())
