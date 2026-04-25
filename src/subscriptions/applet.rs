@@ -12,7 +12,7 @@ use zbus::{
 use super::notifications::Input;
 
 use anyhow::{Result, bail};
-use cosmic_notifications_util::DAEMON_NOTIFICATIONS_FD;
+use cosmic_notifications_config::DAEMON_NOTIFICATIONS_FD;
 use std::os::unix::io::FromRawFd;
 
 pub async fn setup_panel_conn(tx: Sender<Input>) -> Result<Connection> {

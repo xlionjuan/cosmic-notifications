@@ -5,7 +5,7 @@ pub use image::*;
 
 pub mod markup;
 
-use cosmic::widget::{icon, Icon};
+use cosmic::widget::{Icon, icon};
 use serde::{Deserialize, Serialize};
 use std::{
     collections::HashMap, convert::Infallible, fmt, path::PathBuf, str::FromStr, time::SystemTime,
@@ -238,6 +238,3 @@ pub enum CloseReason {
     CloseNotification = 3,
     Undefined = 4,
 }
-
-pub const PANEL_NOTIFICATIONS_FD: &str = "PANEL_NOTIFICATIONS_FD";
-pub const DAEMON_NOTIFICATIONS_FD: &str = "DAEMON_NOTIFICATIONS_FD";
