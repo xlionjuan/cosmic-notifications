@@ -5,7 +5,7 @@ pub use image::*;
 
 pub mod markup;
 
-use cosmic::widget::{icon, Icon};
+use cosmic::widget::{Icon, icon};
 use serde::{Deserialize, Serialize};
 use std::{
     collections::HashMap, convert::Infallible, fmt, path::PathBuf, str::FromStr, time::SystemTime,
@@ -107,7 +107,7 @@ impl Notification {
     }
 
     pub fn transient(&self) -> bool {
-        self.hints.iter().any(|h| *h == Hint::Transient(true))
+        self.hints.contains(&Hint::Transient(true))
     }
 
     pub fn category(&self) -> Option<&str> {
@@ -153,12 +153,11 @@ impl Notification {
             None => {
                 if !self.app_icon.is_empty() {
                     // Handle file:// URLs in app_icon
-                    if self.app_icon.starts_with("file://") {
-                        if let Ok(url) = url::Url::parse(&self.app_icon) {
-                            if let Ok(path) = url.to_file_path() {
-                                return Some(icon::from_path(path).icon());
-                            }
-                        }
+                    if self.app_icon.starts_with("file://")
+                        && let Ok(url) = url::Url::parse(&self.app_icon)
+                        && let Ok(path) = url.to_file_path()
+                    {
+                        return Some(icon::from_path(path).icon());
                     }
                     // Otherwise treat as icon name
                     Some(icon::from_name(self.app_icon.as_str()).icon())
@@ -238,6 +237,3 @@ pub enum CloseReason {
     CloseNotification = 3,
     Undefined = 4,
 }
-
-pub const PANEL_NOTIFICATIONS_FD: &str = "PANEL_NOTIFICATIONS_FD";
-pub const DAEMON_NOTIFICATIONS_FD: &str = "DAEMON_NOTIFICATIONS_FD";

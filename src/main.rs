@@ -1,13 +1,10 @@
 mod app;
 mod config;
-mod localize;
 mod subscriptions;
 
 use config::APP_ID;
 use tracing::{info, metadata::LevelFilter};
 use tracing_subscriber::{EnvFilter, fmt, prelude::*};
-
-use localize::localize;
 
 use crate::config::VERSION;
 
@@ -35,9 +32,6 @@ fn main() -> anyhow::Result<()> {
 
     info!("cosmic-notifications ({})", APP_ID);
     info!("Version: {} ({})", VERSION, config::profile());
-
-    // Prepare i18n
-    localize();
 
     app::run()?;
     Ok(())
